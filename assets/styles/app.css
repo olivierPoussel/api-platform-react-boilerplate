@@ -1,3 +1,15 @@
-body {
+/* body {
     background-color: lightgray;
+} */
+
+article a {
+    margin-left: auto;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: aqua;
+}
+
+.navbar-dark .navbar-nav .nav-link.about {
+    color: red;
 }

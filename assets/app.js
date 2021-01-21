@@ -1,11 +1,17 @@
+import './styles/bootstrap.min.css'
 import './styles/app.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Menu from './components/menu'
+import ListeArticle from './components/listArticle'
 
-console.log('test');
-
-const App = () => {
-    return <h1>React app</h1>;
+const App = (props) => {
+    return (
+        <>
+            <Menu />
+            <ListeArticle/>
+        </>
+    );
 }
 
 const rootElement = document.getElementById('root');
