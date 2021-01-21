@@ -35,11 +35,6 @@ npm i react react-dom react-router axios
 # + react-router@5.2.0 + react-dom@17.0.1 + react@17.0.1 + axios@0.21.1
 ```
 
-Jwt
-```bash
-npm i jwt-decode 
-```
-
 # Initialisation du projet
 
 config la bdd dans le .env
@@ -52,10 +47,13 @@ php bin/console doctrine:database:create
 ```
 
 # Doc Api-platform
+
 ## configuration
 [config (pagination, etc.)](https://api-platform.com/docs/core/configuration/)
+
 ## mapping entities
 [mapping entities](https://api-platform.com/docs/core/getting-started/#mapping-the-entities)
+
 ## Opération (CRUD)
 [Opération](https://api-platform.com/docs/core/operations/)
 
@@ -67,8 +65,10 @@ php bin/console doctrine:database:create
 
 ## Format & Sérialisation
 [Json-ld, hydra & co](https://api-platform.com/docs/core/serialization/#available-serializers)
+
 ## pagination
 [pagination](https://api-platform.com/docs/core/pagination/)
+
 ## filtre
 
 [Filtre](https://api-platform.com/docs/core/filters/)
@@ -85,7 +85,37 @@ php bin/console doctrine:database:create
 
 # React
 
-[Persist state (localStorage)](https://dev.to/akhilaariyachandra/persistent-state-in-react-f50
-)
+[Persist state (localStorage)](https://dev.to/akhilaariyachandra/persistent-state-in-react-f50)
 
 [ReactRouter](https://reactrouter.com/web/guides/quick-start)
+
+# JWT
+
+[JWT apiPlatform doc](https://api-platform.com/docs/core/jwt/)
+
+[Openssl téléchargement](https://slproweb.com/products/Win32OpenSSL.html)
+
+[Tuto openssl pour windows](https://www.tbs-certificats.com/FAQ/fr/openssl-windows.html)
+
+[Doc/install LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md)
+
+```bash
+npm i jwt-decode
+composer require jwt-auth
+```
+installer openssl si vous ne l'avez pas sur votre pc.
+
+ajouter le dans vos variable d'environement pour l'avoir dans la console.
+
+créer vos clé avec openssl
+```bash
+# créer le répertoire dans votre projet pour y stocker les clés.
+mkdir -p config/jwt
+openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
+openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
+```
+
+créer l'entité user
+```
+php bin/console make:user
+```
