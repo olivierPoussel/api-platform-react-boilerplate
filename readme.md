@@ -31,8 +31,8 @@ Config webpack pour react
 react 
 ```bash
 npm install @babel/preset-react@^7.0.0 --save-dev
-npm i react react-dom react-router axios
-# + react-router@5.2.0 + react-dom@17.0.1 + react@17.0.1 + axios@0.21.1
+npm i react react-dom react-router-dom axios
+# + react-router-dom@5.2.0 + react-dom@17.0.1 + react@17.0.1 + axios@0.21.1
 ```
 
 # Initialisation du projet
@@ -98,6 +98,8 @@ php bin/console doctrine:database:create
 [Tuto openssl pour windows](https://www.tbs-certificats.com/FAQ/fr/openssl-windows.html)
 
 [Doc/install LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md)
+
+[Symfony Kernel event (encode pwd)](https://api-platform.com/docs/core/events/#built-in-event-listeners)
 
 ```bash
 npm i jwt-decode
