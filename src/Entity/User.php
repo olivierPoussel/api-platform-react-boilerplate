@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- *  * @ApiResource(
+ * @ApiResource(
  *      collectionOperations={"get", "post"},
  *      itemOperations={"get", "put", "patch", "delete"}
  * )

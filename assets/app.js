@@ -12,8 +12,6 @@ import AuthContext from './context/AuthContext';
 
 AuthApi.init();
 
-
-
 const App = (props) => {
 
     const[isAuth, setIsAuth] = useState(AuthApi.isAuth());
@@ -29,15 +27,15 @@ const App = (props) => {
         <AuthContext.Provider value={contextValue}>
             <React.StrictMode>
                 <HashRouter>
-                <NavbarRouter />
-                <Switch>
-                    <Route path='/login' component={LoginPage}>
-                    </Route>
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                    {/* <PrivateRoute path='/account' component={Account}></PrivateRoute> */}
-                </Switch>
+                    <NavbarRouter />
+                    <Switch>
+                        <Route path='/login' component={LoginPage}>
+                        </Route>
+                        <Route path="/">
+                            <Home />
+                        </Route>
+                        {/* <PrivateRoute path='/account' component={Account}></PrivateRoute> */}
+                    </Switch>
                 </HashRouter>
             </React.StrictMode>
         </AuthContext.Provider>

@@ -31,7 +31,7 @@ class PwdEncoderSubscriber implements EventSubscriberInterface
         $method = $event->getRequest()->getMethod();
 
         if($result instanceof User && $method === "POST") {
-            $result->setPassword($this->encoder->encodePassword($result,$result->getPassword()));
+            $result->setPassword($this->encoder->encodePassword($result, $result->getPassword()));
         }
     }
 }

@@ -66,7 +66,7 @@ const LoginPage = ({history}) => {
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">Connexion</button>
-                    </div>
+                </div>
             </form>
         </> 
     );
