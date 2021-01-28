@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 import AuthApi from '../services/authApi';
-import AuthContext from '../context/AuthContext'
 
 const menu = ({history}) => {
 
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {isAuth, username} = useContext(AuthContext);
 
     const handleLogout = () => {
         AuthApi.logout();
-        setIsAuth(false);
         history.push('/login');
     }    
 
@@ -22,26 +21,31 @@ const menu = ({history}) => {
 
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
+                    <li className="nav-item">
                         <NavLink className="nav-link" to="/">Home<span className="sr-only">(current)</span>
                         </NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to="/">Features</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link about" to="/">About</NavLink>
-                    </li>
-                    {!isAuth && (
-                        <li>
-                            <NavLink className="nav-link" to="/login">login</NavLink >
-                        </li>
+                    {!isAuth() && (
+                        <>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/registration">Inscription</NavLink >
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/login">Connexion</NavLink >
+                            </li>                
+                        </>
                     )
                     ||
-                    (
-                        <li className="nav-item">
-                            <a onClick={handleLogout} className="nav-link text-danger" href="#">Déconnexion</a>
-                        </li>
+                    (       
+                        <>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/article/create">CreateArticle</NavLink>
+                            </li>
+                            <li><p className="nav-link">{"Bonjour "+username()}</p></li>
+                            <li className="nav-item">
+                                <a onClick={handleLogout} className="nav-link text-danger" href="#">Déconnexion</a>
+                            </li>
+                        </>
                     )
                     }
                 </ul>

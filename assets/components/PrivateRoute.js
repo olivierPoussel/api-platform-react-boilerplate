@@ -3,11 +3,11 @@ import { Redirect, Route } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 
 
-const PrivateRoute = ({path, component}) => {
+const PrivateRoute = ({path, component, admin = false}) => {
 
-    const {isAuth} = useContext(AuthContext);
+    const {isAuth, isAdmin} = useContext(AuthContext);
 
-    return isAuth ? 
+    return ((isAuth() && !admin) || ( admin && isAdmin()) )? 
         <Route path={path} component={component}/> 
         : 
         <Redirect to="/login" />

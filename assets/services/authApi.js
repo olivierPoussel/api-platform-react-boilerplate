@@ -1,14 +1,11 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-function logout() {
-    window.localStorage.removeItem('authToken');
-    delete axios.defaults.headers["Authorization"];
-}
+const url = "http://localhost:8000/api/";
 
 function auth(credentials) {
     return axios
-        .post("http://localhost:8000/api/login_check", credentials)
+        .post(url+"login_check", credentials)
         .then(response => response.data.token)
         .then(token => {
             window.localStorage.setItem('authToken', token);
@@ -17,6 +14,11 @@ function auth(credentials) {
 
             return true;
         });
+}
+
+function logout() {
+    window.localStorage.removeItem('authToken');
+    delete axios.defaults.headers["Authorization"];
 }
 
 function init() {
@@ -43,7 +45,31 @@ function isAuth() {
         return false
     }
     return false
-} 
+}
+
+function isAdmin() {
+    if(isAuth()) {
+        const token = window.localStorage.getItem('authToken');
+        const jwtData = jwtDecode(token);
+        if(jwtData.roles.find((element) => element === 'ROLE_ADMIN')) {
+            return true;
+        }
+        return false;
+    }
+
+    return false;
+}
+
+function getUserName() {
+    if(isAuth()) {
+        const token = window.localStorage.getItem('authToken');
+        const jwtData = jwtDecode(token);
+        
+        return jwtData.username;
+    }
+
+    return '';
+}
 
 function _setAxiosToken(token) {
     axios.defaults.headers["Authorization"] = "Bearer " + token;
@@ -53,5 +79,7 @@ export default {
     auth,
     logout,
     init,
-    isAuth
+    isAuth,
+    isAdmin,
+    getUserName
 }
