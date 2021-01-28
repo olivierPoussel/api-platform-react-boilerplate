@@ -37,6 +37,8 @@ function isAuth() {
 
         if(jwtData.exp * 1000 > new Date().getTime()) {
             return true
+        }else {
+            this.logout()
         }
         return false
     }
